@@ -1,0 +1,741 @@
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"/><title>Math</title><style>
+/* cspell:disable-file */
+/* webkit printing magic: print all background colors */
+html {
+	-webkit-print-color-adjust: exact;
+}
+* {
+	box-sizing: border-box;
+	-webkit-print-color-adjust: exact;
+}
+
+html,
+body {
+	margin: 0;
+	padding: 0;
+}
+@media only screen {
+	body {
+		margin: 2em auto;
+		max-width: 900px;
+		color: rgb(55, 53, 47);
+	}
+}
+
+body {
+	line-height: 1.5;
+	white-space: pre-wrap;
+}
+
+a,
+a.visited {
+	color: inherit;
+	text-decoration: underline;
+}
+
+.pdf-relative-link-path {
+	font-size: 80%;
+	color: #444;
+}
+
+h1,
+h2,
+h3 {
+	letter-spacing: -0.01em;
+	line-height: 1.2;
+	font-weight: 600;
+	margin-bottom: 0;
+}
+
+.page-title {
+	font-size: 2.5rem;
+	font-weight: 700;
+	margin-top: 0;
+	margin-bottom: 0.75em;
+}
+
+h1 {
+	font-size: 1.875rem;
+	margin-top: 1.875rem;
+}
+
+h2 {
+	font-size: 1.5rem;
+	margin-top: 1.5rem;
+}
+
+h3 {
+	font-size: 1.25rem;
+	margin-top: 1.25rem;
+}
+
+.source {
+	border: 1px solid #ddd;
+	border-radius: 3px;
+	padding: 1.5em;
+	word-break: break-all;
+}
+
+.callout {
+	border-radius: 3px;
+	padding: 1rem;
+}
+
+figure {
+	margin: 1.25em 0;
+	page-break-inside: avoid;
+}
+
+figcaption {
+	opacity: 0.5;
+	font-size: 85%;
+	margin-top: 0.5em;
+}
+
+mark {
+	background-color: transparent;
+}
+
+.indented {
+	padding-left: 1.5em;
+}
+
+hr {
+	background: transparent;
+	display: block;
+	width: 100%;
+	height: 1px;
+	visibility: visible;
+	border: none;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.09);
+}
+
+img {
+	max-width: 100%;
+}
+
+@media only print {
+	img {
+		max-height: 100vh;
+		object-fit: contain;
+	}
+}
+
+@page {
+	margin: 1in;
+}
+
+.collection-content {
+	font-size: 0.875rem;
+}
+
+.column-list {
+	display: flex;
+	justify-content: space-between;
+}
+
+.column {
+	padding: 0 1em;
+}
+
+.column:first-child {
+	padding-left: 0;
+}
+
+.column:last-child {
+	padding-right: 0;
+}
+
+.table_of_contents-item {
+	display: block;
+	font-size: 0.875rem;
+	line-height: 1.3;
+	padding: 0.125rem;
+}
+
+.table_of_contents-indent-1 {
+	margin-left: 1.5rem;
+}
+
+.table_of_contents-indent-2 {
+	margin-left: 3rem;
+}
+
+.table_of_contents-indent-3 {
+	margin-left: 4.5rem;
+}
+
+.table_of_contents-link {
+	text-decoration: none;
+	opacity: 0.7;
+	border-bottom: 1px solid rgba(55, 53, 47, 0.18);
+}
+
+table,
+th,
+td {
+	border: 1px solid rgba(55, 53, 47, 0.09);
+	border-collapse: collapse;
+}
+
+table {
+	border-left: none;
+	border-right: none;
+}
+
+th,
+td {
+	font-weight: normal;
+	padding: 0.25em 0.5em;
+	line-height: 1.5;
+	min-height: 1.5em;
+	text-align: left;
+}
+
+th {
+	color: rgba(55, 53, 47, 0.6);
+}
+
+ol,
+ul {
+	margin: 0;
+	margin-block-start: 0.6em;
+	margin-block-end: 0.6em;
+}
+
+li > ol:first-child,
+li > ul:first-child {
+	margin-block-start: 0.6em;
+}
+
+ul > li {
+	list-style: disc;
+}
+
+ul.to-do-list {
+	padding-inline-start: 0;
+}
+
+ul.to-do-list > li {
+	list-style: none;
+}
+
+.to-do-children-checked {
+	text-decoration: line-through;
+	opacity: 0.375;
+}
+
+ul.toggle > li {
+	list-style: none;
+}
+
+ul {
+	padding-inline-start: 1.7em;
+}
+
+ul > li {
+	padding-left: 0.1em;
+}
+
+ol {
+	padding-inline-start: 1.6em;
+}
+
+ol > li {
+	padding-left: 0.2em;
+}
+
+.mono ol {
+	padding-inline-start: 2em;
+}
+
+.mono ol > li {
+	text-indent: -0.4em;
+}
+
+.toggle {
+	padding-inline-start: 0em;
+	list-style-type: none;
+}
+
+/* Indent toggle children */
+.toggle > li > details {
+	padding-left: 1.7em;
+}
+
+.toggle > li > details > summary {
+	margin-left: -1.1em;
+}
+
+.selected-value {
+	display: inline-block;
+	padding: 0 0.5em;
+	background: rgba(206, 205, 202, 0.5);
+	border-radius: 3px;
+	margin-right: 0.5em;
+	margin-top: 0.3em;
+	margin-bottom: 0.3em;
+	white-space: nowrap;
+}
+
+.collection-title {
+	display: inline-block;
+	margin-right: 1em;
+}
+
+.page-description {
+    margin-bottom: 2em;
+}
+
+.simple-table {
+	margin-top: 1em;
+	font-size: 0.875rem;
+	empty-cells: show;
+}
+.simple-table td {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table th {
+	height: 29px;
+	min-width: 120px;
+}
+
+.simple-table-header-color {
+	background: rgb(247, 246, 243);
+	color: black;
+}
+.simple-table-header {
+	font-weight: 500;
+}
+
+time {
+	opacity: 0.5;
+}
+
+.icon {
+	display: inline-block;
+	max-width: 1.2em;
+	max-height: 1.2em;
+	text-decoration: none;
+	vertical-align: text-bottom;
+	margin-right: 0.5em;
+}
+
+img.icon {
+	border-radius: 3px;
+}
+
+.user-icon {
+	width: 1.5em;
+	height: 1.5em;
+	border-radius: 100%;
+	margin-right: 0.5rem;
+}
+
+.user-icon-inner {
+	font-size: 0.8em;
+}
+
+.text-icon {
+	border: 1px solid #000;
+	text-align: center;
+}
+
+.page-cover-image {
+	display: block;
+	object-fit: cover;
+	width: 100%;
+	max-height: 30vh;
+}
+
+.page-header-icon {
+	font-size: 3rem;
+	margin-bottom: 1rem;
+}
+
+.page-header-icon-with-cover {
+	margin-top: -0.72em;
+	margin-left: 0.07em;
+}
+
+.page-header-icon img {
+	border-radius: 3px;
+}
+
+.link-to-page {
+	margin: 1em 0;
+	padding: 0;
+	border: none;
+	font-weight: 500;
+}
+
+p > .user {
+	opacity: 0.5;
+}
+
+td > .user,
+td > time {
+	white-space: nowrap;
+}
+
+input[type="checkbox"] {
+	transform: scale(1.5);
+	margin-right: 0.6em;
+	vertical-align: middle;
+}
+
+p {
+	margin-top: 0.5em;
+	margin-bottom: 0.5em;
+}
+
+.image {
+	border: none;
+	margin: 1.5em 0;
+	padding: 0;
+	border-radius: 0;
+	text-align: center;
+}
+
+.code,
+code {
+	background: rgba(135, 131, 120, 0.15);
+	border-radius: 3px;
+	padding: 0.2em 0.4em;
+	border-radius: 3px;
+	font-size: 85%;
+	tab-size: 2;
+}
+
+code {
+	color: #eb5757;
+}
+
+.code {
+	padding: 1.5em 1em;
+}
+
+.code-wrap {
+	white-space: pre-wrap;
+	word-break: break-all;
+}
+
+.code > code {
+	background: none;
+	padding: 0;
+	font-size: 100%;
+	color: inherit;
+}
+
+blockquote {
+	font-size: 1.25em;
+	margin: 1em 0;
+	padding-left: 1em;
+	border-left: 3px solid rgb(55, 53, 47);
+}
+
+.bookmark {
+	text-decoration: none;
+	max-height: 8em;
+	padding: 0;
+	display: flex;
+	width: 100%;
+	align-items: stretch;
+}
+
+.bookmark-title {
+	font-size: 0.85em;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	height: 1.75em;
+	white-space: nowrap;
+}
+
+.bookmark-text {
+	display: flex;
+	flex-direction: column;
+}
+
+.bookmark-info {
+	flex: 4 1 180px;
+	padding: 12px 14px 14px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.bookmark-image {
+	width: 33%;
+	flex: 1 1 180px;
+	display: block;
+	position: relative;
+	object-fit: cover;
+	border-radius: 1px;
+}
+
+.bookmark-description {
+	color: rgba(55, 53, 47, 0.6);
+	font-size: 0.75em;
+	overflow: hidden;
+	max-height: 4.5em;
+	word-break: break-word;
+}
+
+.bookmark-href {
+	font-size: 0.75em;
+	margin-top: 0.25em;
+}
+
+.sans { font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol"; }
+.code { font-family: "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace; }
+.serif { font-family: Lyon-Text, Georgia, ui-serif, serif; }
+.mono { font-family: iawriter-mono, Nitti, Menlo, Courier, monospace; }
+.pdf .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK JP'; }
+.pdf:lang(zh-CN) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK SC'; }
+.pdf:lang(zh-TW) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK TC'; }
+.pdf:lang(ko-KR) .sans { font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, "Apple Color Emoji", Arial, sans-serif, "Segoe UI Emoji", "Segoe UI Symbol", 'Twemoji', 'Noto Color Emoji', 'Noto Sans CJK KR'; }
+.pdf .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .code { font-family: Source Code Pro, "SFMono-Regular", Menlo, Consolas, "PT Mono", "Liberation Mono", Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.pdf .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK JP'; }
+.pdf:lang(zh-CN) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK SC'; }
+.pdf:lang(zh-TW) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK TC'; }
+.pdf:lang(ko-KR) .serif { font-family: PT Serif, Lyon-Text, Georgia, ui-serif, serif, 'Twemoji', 'Noto Color Emoji', 'Noto Serif CJK KR'; }
+.pdf .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK JP'; }
+.pdf:lang(zh-CN) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK SC'; }
+.pdf:lang(zh-TW) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK TC'; }
+.pdf:lang(ko-KR) .mono { font-family: PT Mono, iawriter-mono, Nitti, Menlo, Courier, monospace, 'Twemoji', 'Noto Color Emoji', 'Noto Sans Mono CJK KR'; }
+.highlight-default {
+	color: rgba(55, 53, 47, 1);
+}
+.highlight-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.highlight-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.highlight-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.highlight-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.highlight-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.highlight-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.highlight-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.highlight-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.highlight-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.highlight-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.highlight-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.highlight-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.highlight-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.highlight-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.highlight-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.highlight-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.highlight-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.highlight-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.block-color-default {
+	color: inherit;
+	fill: inherit;
+}
+.block-color-gray {
+	color: rgba(120, 119, 116, 1);
+	fill: rgba(120, 119, 116, 1);
+}
+.block-color-brown {
+	color: rgba(159, 107, 83, 1);
+	fill: rgba(159, 107, 83, 1);
+}
+.block-color-orange {
+	color: rgba(217, 115, 13, 1);
+	fill: rgba(217, 115, 13, 1);
+}
+.block-color-yellow {
+	color: rgba(203, 145, 47, 1);
+	fill: rgba(203, 145, 47, 1);
+}
+.block-color-teal {
+	color: rgba(68, 131, 97, 1);
+	fill: rgba(68, 131, 97, 1);
+}
+.block-color-blue {
+	color: rgba(51, 126, 169, 1);
+	fill: rgba(51, 126, 169, 1);
+}
+.block-color-purple {
+	color: rgba(144, 101, 176, 1);
+	fill: rgba(144, 101, 176, 1);
+}
+.block-color-pink {
+	color: rgba(193, 76, 138, 1);
+	fill: rgba(193, 76, 138, 1);
+}
+.block-color-red {
+	color: rgba(212, 76, 71, 1);
+	fill: rgba(212, 76, 71, 1);
+}
+.block-color-gray_background {
+	background: rgba(241, 241, 239, 1);
+}
+.block-color-brown_background {
+	background: rgba(244, 238, 238, 1);
+}
+.block-color-orange_background {
+	background: rgba(251, 236, 221, 1);
+}
+.block-color-yellow_background {
+	background: rgba(251, 243, 219, 1);
+}
+.block-color-teal_background {
+	background: rgba(237, 243, 236, 1);
+}
+.block-color-blue_background {
+	background: rgba(231, 243, 248, 1);
+}
+.block-color-purple_background {
+	background: rgba(244, 240, 247, 0.8);
+}
+.block-color-pink_background {
+	background: rgba(249, 238, 243, 0.8);
+}
+.block-color-red_background {
+	background: rgba(253, 235, 236, 1);
+}
+.select-value-color-uiBlue { background-color: rgba(35, 131, 226, .07); }
+.select-value-color-pink { background-color: rgba(245, 224, 233, 1); }
+.select-value-color-purple { background-color: rgba(232, 222, 238, 1); }
+.select-value-color-green { background-color: rgba(219, 237, 219, 1); }
+.select-value-color-gray { background-color: rgba(227, 226, 224, 1); }
+.select-value-color-transparentGray { background-color: rgba(227, 226, 224, 0); }
+.select-value-color-translucentGray { background-color: rgba(255, 255, 255, 0.0375); }
+.select-value-color-orange { background-color: rgba(250, 222, 201, 1); }
+.select-value-color-brown { background-color: rgba(238, 224, 218, 1); }
+.select-value-color-red { background-color: rgba(255, 226, 221, 1); }
+.select-value-color-yellow { background-color: rgba(253, 236, 200, 1); }
+.select-value-color-blue { background-color: rgba(211, 229, 239, 1); }
+.select-value-color-pageGlass { background-color: undefined; }
+.select-value-color-washGlass { background-color: undefined; }
+
+.checkbox {
+	display: inline-flex;
+	vertical-align: text-bottom;
+	width: 16;
+	height: 16;
+	background-size: 16px;
+	margin-left: 2px;
+	margin-right: 5px;
+}
+
+.checkbox-on {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20width%3D%2216%22%20height%3D%2216%22%20fill%3D%22%2358A9D7%22%2F%3E%0A%3Cpath%20d%3D%22M6.71429%2012.2852L14%204.9995L12.7143%203.71436L6.71429%209.71378L3.28571%206.2831L2%207.57092L6.71429%2012.2852Z%22%20fill%3D%22white%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+
+.checkbox-off {
+	background-image: url("data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2216%22%20height%3D%2216%22%20viewBox%3D%220%200%2016%2016%22%20fill%3D%22none%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%3E%0A%3Crect%20x%3D%220.75%22%20y%3D%220.75%22%20width%3D%2214.5%22%20height%3D%2214.5%22%20fill%3D%22white%22%20stroke%3D%22%2336352F%22%20stroke-width%3D%221.5%22%2F%3E%0A%3C%2Fsvg%3E");
+}
+	
+</style></head><body><article id="e39095df-a3ec-41f7-8c6a-3e561ec36799" class="page sans"><header><h1 class="page-title">Math</h1><p class="page-description"></p></header><div class="page-body"><h1 id="d9201954-446c-4c26-9f86-ce705a485b88" class=""><mark class="highlight-purple"><strong>2008:</strong></mark></h1><h2 id="af6ddbc8-bb8e-4163-a588-606cacd3cf45" class="">Session Principale</h2><hr id="93e54f1e-0673-4747-8587-12b3640d9677"/><p id="8bd4dbb4-829d-4faf-949c-32e22c57d543" class="">
+</p><p id="822b9462-fbad-4bd1-8b18-bcfdc5798523" class=""><span style="border-bottom:0.05em solid">exercise 1: </span></p><p id="ff1629a7-d6a7-456e-a806-d7e12c211bec" class="">QCM sur les suites + limites</p><p id="baf91a44-5f7b-4f81-8e46-ce0c14250dc9" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><p id="7b6a109e-2de6-4659-be14-39955aa9308a" class="">Analyse</p><p id="087022ef-296d-44ac-a86f-d9de4ed56120" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="e973e72c-b6cd-459b-b48a-a918cba2e92c" class="numbered-list" start="1"><li>Résolution de l&#x27;équation dans l&#x27;ensemble des nombres complexes.</li></ol><ol type="1" id="27de9d7c-9ee1-41e1-9fda-8aed9c13bd60" class="numbered-list" start="2"><li>Calcul des distances et propriétés géométriques dans le plan complexe.</li></ol><ol type="1" id="3df973c7-9a8c-4950-87e9-34970fe4a48f" class="numbered-list" start="3"><li>Détermination d&#x27;une affixe pour construire un rectangle.</li></ol><p id="d6c5a5cf-0fda-4894-842f-5ed7027f161f" class=""><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="c46cb93f-bba1-4ec5-a477-fe90a29c8ae0" class="numbered-list" start="1"><li>Représentation graphique d&#x27;une fonction.</li></ol><ol type="1" id="7e54b656-9fa5-4baf-82a2-8b698bedf3b8" class="numbered-list" start="2"><li>Calculs et propriétés de la fonction.</li></ol><ol type="1" id="feaf03dd-2f4a-46c3-aff1-a2d87f697830" class="numbered-list" start="3"><li>Étude et manipulation de la fonction avec des constantes réelles.</li></ol><ol type="1" id="93c79ed0-00e9-438c-8f24-2e46ca822bb7" class="numbered-list" start="4"><li>Utilisation de l&#x27;intégration et calculs d&#x27;aire.</li></ol><p id="affd7393-36c7-42c1-aaad-4e579f00ead0" class=""><span style="border-bottom:0.05em solid">exercise 5:</span></p><ol type="1" id="f5894c8b-ab85-493b-b747-5ee9e03061cd" class="numbered-list" start="1"><li>Étude de l&#x27;alignement des points A, B et C et équation cartésienne du plan (ABC).</li></ol><ol type="1" id="3a6b98e2-2da8-4287-bbfe-11cf9b59f1ad" class="numbered-list" start="2"><li>Manipulation d&#x27;une matrice et résolution d&#x27;un système d&#x27;équations.</li></ol><ol type="1" id="f5ff9a6d-0db7-4cf7-acea-722817b19ced" class="numbered-list" start="3"><li>Résolution d&#x27;un système d&#x27;équations linéaires et intersection de plans</li></ol><p id="83b843de-2982-4761-8615-29ff03b460ee" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c5a2ab65-bf41-494b-bea0-b9b511dce71a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Lessons: Analyse, Nombres coplexe, Matrice, Arithmitique</div></figure><p id="138e9e06-63fb-47a8-8bfd-536dc857598f" class="">
+</p><figure id="06bdc7c7-fa29-4ec2-9f7b-ac7ace2a603e"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2008.pdf">2008.pdf</a></div></figure><p id="09e39188-899b-4939-ab90-010a3f2fa742" class="">
+</p><h2 id="46de6ee7-1d18-4065-8257-5cd4243da1ff" class="">Session control</h2><hr id="deb7bfaf-7ab6-4fdb-9d2e-012621b28dab"/><p id="ecf8ac91-b0a9-4bf4-9b90-0f96d3b37ae1" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><ol type="1" id="b28ba920-0224-41b0-beb5-cf076265b78a" class="numbered-list" start="1"><li>Calculs et résolution d&#x27;équations dans le domaine complexe.</li></ol><ol type="1" id="8b1930f9-548f-4e71-9985-01e68fedb3d0" class="numbered-list" start="2"><li>Utilisation de repères complexes et géométrie dans le plan complexe.</li></ol><ol type="1" id="1a05b6a5-d424-47c7-b638-c121e543c3fb" class="numbered-list" start="3"><li>Calculs supplémentaires avec des affixes complexes.</li></ol><p id="6c289e66-7bca-45c1-a0ff-7e5d9c214699" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="e9d2dfcc-fb6c-48f2-958d-afff057bd49a" class="numbered-list" start="1"><li>Résolution d&#x27;un système d&#x27;équations diophantiennes.</li></ol><ol type="1" id="8f78820e-d8fc-48b3-a8a3-4558f233c194" class="numbered-list" start="2"><li>Utilisation des diviseurs communs.</li></ol><ol type="1" id="034ae1be-9333-4c61-b508-420b1be396b8" class="numbered-list" start="3"><li>Relation avec le système (S).</li></ol><ol type="1" id="dd58b24c-56f6-4a4c-b110-461d83899fdf" class="numbered-list" start="4"><li>Résolution d&#x27;un problème pratique impliquant le partage d&#x27;une somme d&#x27;argent.</li></ol><p id="ed9d02ce-7c79-42f3-a0fa-0b2d0608f9a5" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="8d22f3c5-4a57-49c4-83ad-33bd8a664c07" class="numbered-list" start="1"><li>Étude de la séquence (un).</li></ol><ol type="1" id="795bd731-7fcc-4fd9-9beb-21234a1ba757" class="numbered-list" start="2"><li>Étude de la séquence (v).</li></ol><p id="396d82c5-58a8-42e0-a60d-81fc27619805" class=""><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="989754d9-0d21-493c-88bb-3b54fec85125" class="numbered-list" start="1"><li>Analyse des limites.</li></ol><ol type="1" id="e9c0f303-f245-4547-8893-07353ddfa3f6" class="numbered-list" start="2"><li>Analyse de la dérivabilité et des variations de <em>f.</em></li></ol><ol type="1" id="244acc00-59ff-4f60-a03c-e4d18438df2a" class="numbered-list" start="3"><li>Intersection de la courbe (8) avec l&#x27;axe des abscisses.</li></ol><ol type="1" id="a6a57287-77d8-48c1-9afc-03b4b1fca66a" class="numbered-list" start="4"><li>Étude des propriétés de <em>f.</em></li></ol><ol type="1" id="4d4c1dae-458b-4282-aa3f-d70956738398" class="numbered-list" start="5"><li>tracage de la courbe.</li></ol><ol type="1" id="b1cb3f87-4b82-4dcd-b4b1-245ea4f5d604" class="numbered-list" start="6"><li>Vérification de l&#x27;antidérivation et calcul d&#x27;une aire.</li></ol><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="868248c2-1e9b-4e8d-8d61-1134a948d584"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Arithmétique et théorie des nombres, Analyse mathématique, Géométrie analytique et plane, Calcul intégral et applications.</strong></div></figure><p id="54002914-f945-43ac-bb06-3a652cc3892b" class="">
+</p><figure id="ad1686cc-9658-44c0-b29a-4332238f4b71"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2008.2.pdf">2008.2.pdf</a></div></figure><p id="1bd055e2-77cc-402a-b2c9-659a80f24bd6" class="">
+</p><h1 id="84fa8b51-0b76-49bd-ad34-8a1996bcd378" class=""><mark class="highlight-purple"><strong>2009:</strong></mark></h1><h2 id="6f3a4e21-633f-4c42-b4be-515f0ed8e6d6" class="">Session Principale</h2><hr id="1cb4d403-78c8-42e7-a082-f03f587b5d7a"/><p id="2e91c1bc-b316-4f43-8cc2-6fa6640e7def" class="">
+</p><p id="c6bc00be-f9bc-468a-9f02-1cf1f740de2f" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><p id="e597989a-7fa4-48ea-ba5b-1bb5a2c05edd" class="">QCM sur le cycle Eulerian</p><p id="3b2fe84e-466a-4d66-99d2-3ac4029c9199" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="7901ee2e-8871-4fb9-a8cf-b41de228ad3e" class="numbered-list" start="1"><li>Resolution d&#x27;équations linéaires dans Z x Z</li></ol><ol type="1" id="5d822415-e061-4176-aceb-81939b30362f" class="numbered-list" start="2"><li>Analyse des âges et relations entre personnes </li></ol><ol type="1" id="d6658f8b-8eb3-4460-baf8-2d14ba0d484a" class="numbered-list" start="3"><li>une probleme</li></ol><p id="4aa57278-dfa1-4b8d-88ca-1932ba7306d1" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="862edcb2-0bcd-4d81-8454-66d60b6674da" class="numbered-list" start="1"><li>Calculer le carré d&#x27;un nombre complexe.</li></ol><ol type="1" id="f86b4163-106d-4d28-af1f-3d03a05b15f8" class="numbered-list" start="2"><li>résoudre une équation quadratique complexe.</li></ol><ol type="1" id="9e260019-3aae-4eff-b54b-ebcf6b5654aa" class="numbered-list" start="3"><li> effectuer des calculs géométriques dans le plan complexe.</li></ol><ol type="1" id="9c3f6c53-1ecc-4ae3-8367-825763787b3b" class="numbered-list" start="4"><li>démontrer que le quadrilatère ABCD est un carré.</li></ol><p id="2e94db6f-a7da-46fb-874d-304113df2c37" class=""><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="dfa0b719-4b80-4b66-8ead-50bba2e443a3" class="numbered-list" start="1"><li>Calculation de derive</li></ol><ol type="1" id="828704c0-20cb-446e-bd20-35d36ca7fada" class="numbered-list" start="2"><li>le tableau de variation</li></ol><ol type="1" id="8b28d700-d3af-4645-b6fd-9caf37cf6585" class="numbered-list" start="3"><li>trouver f’(x)</li></ol><ol type="1" id="18db391d-9487-4d04-ab61-f771c3629003" class="numbered-list" start="4"><li>Résolution d&#x27;un système d&#x27;équations</li></ol><p id="ae0e14a9-e14b-469a-8f04-d6020d369468" class=""><span style="border-bottom:0.05em solid">exercise 5:</span></p><ol type="1" id="c4346b5b-9c61-4b79-98d3-1de4070d6a96" class="numbered-list" start="1"><li>Calcul de la probabilité de l&#x27;intersection de deux événements.</li></ol><ol type="1" id="1f2556fd-214e-4669-8f3f-288def76366d" class="numbered-list" start="2"><li>Utilisation de la distribution binomiale pour calculer la probabilité qu&#x27;un certain nombre de calculatrices soient défectueuses dans une commande donnée.</li></ol><ol type="1" id="92a2c42d-672c-45e5-94bf-af8098a51d98" class="numbered-list" start="3"><li>détermination du nombre maximum de calculatrices qui peut être commandé tout en respectant ce critère de risque</li></ol><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="261d1a1a-d8ae-45bb-a019-90d3c08c9f64"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Résolution d&#x27;équations linéaires , Opérations sur les nombres complexes, Calculs de valeurs de fonction et de dérivée, Calculs et propriétés de fonctions, Probabilités et événements indépendants, Matrice</strong></div></figure><p id="f31f41a3-1a3f-420b-9382-c637cdd7fca1" class="">
+</p><figure id="4ff3d695-801b-4e8e-89cb-858971911556"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2009.pdf">2009.pdf</a></div></figure><p id="b0b540df-384e-491a-b578-bc45cd8cf119" class="">
+</p><h2 id="ce5c0f95-a9fd-499c-aae5-a2e558e395e6" class="">Session control</h2><hr id="98f29f26-f3a6-42fa-8bdb-5c6567078237"/><p id="a7f848a5-dbee-4937-9c9d-6db036893af2" class="">
+</p><p id="f780f5bd-3dd3-4217-a201-2157f3a3dd0f" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><ol type="1" id="92aa14a6-cce7-4f24-8372-6698aa475005" class="numbered-list" start="1"><li>Détermination du plan à partir de points</li></ol><ol type="1" id="dbc2956f-e4bb-464e-bca8-40d3df51529b" class="numbered-list" start="2"><li>Relations entre points, lignes et plans</li></ol><ol type="1" id="4ed1d574-2bb5-40de-8397-e93aeaad8315" class="numbered-list" start="3"><li>QCM</li></ol><p id="dae0afa8-36d0-4b7d-be64-077fbe44fda4" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="5f4744fa-fd21-4245-9989-589888dffc80" class="numbered-list" start="1"><li>Opérations avec les nombres complexes.</li></ol><ol type="1" id="c8a1f13d-e5f7-4ef2-a7dd-3528e5c72481" class="numbered-list" start="2"><li>Utilisation des modules complexes.</li></ol><ol type="1" id="fe895af8-962b-40e4-9c2a-d2e6d1c780f0" class="numbered-list" start="3"><li>Résolution d&#x27;équations complexes.</li></ol><p id="37d25626-5a47-4b5e-94f1-379d27ff2a70" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><p id="72eaab18-c2be-4f9b-b91f-a926256b3d7a" class="">Arithmitique et suites, <br/><br/><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="463bb9b9-8752-42ca-8597-da0f234d6b8f" class="numbered-list" start="1"><li>I’intergral</li></ol><ol type="1" id="685122ce-7f7d-453c-ac5b-d5dbce479660" class="numbered-list" start="2"><li>les branches</li></ol><ol type="1" id="173e0402-2ec3-4649-81d6-bb3e1dda054e" class="numbered-list" start="3"><li>Analyse en generale</li></ol><p id="dc8f9815-0225-4e29-8444-bd58e1cd55aa" class=""><span style="border-bottom:0.05em solid">exercise 5:</span></p><ol type="1" id="98235686-650c-4a41-9154-ae16a0b3efd8" class="numbered-list" start="1"><li>Arithmitique</li></ol><ol type="1" id="5d01f5fe-390e-46e9-8d79-a5f72c737bbc" class="numbered-list" start="2"><li>des repere</li></ol><ol type="1" id="33dd2052-b9e2-4856-8fd7-658766b814f3" class="numbered-list" start="3"><li>l’espace</li></ol><p id="3f03eaf9-6c9b-4597-860e-081ddb277015" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="80cd6002-2dc5-4fec-8907-53c61c0321a0"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Détermination du plan à partir de points, Relations entre points, lignes et plans, les nombres complexes, L&#x27;intégrale</strong></div></figure><p id="60226e02-193f-4893-808b-36f018c433cf" class="">
+</p><p id="0bf505cd-2774-46db-9ac7-05ab6ba0ce87" class="">
+</p><figure id="2ea9982a-1a0e-46f7-8aec-a7b9a40680e0"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2009.2.pdf">2009.2.pdf</a></div></figure><p id="8e933cf3-c339-4c09-ab6d-f7c41f331e03" class="">
+</p><p id="50615453-32e5-4239-b16a-127f71dcb258" class="">
+</p><h1 id="4011ee5c-ede4-4ac9-8309-d6b213bcc8be" class=""><mark class="highlight-purple"><strong>2010:</strong></mark></h1><p id="8ff673d2-0f43-424e-a4fe-04466d8eb053" class="">
+</p><h2 id="01aca2a9-9709-45c2-807e-bb85111dfb71" class="">Session Principale</h2><hr id="722cae32-c4ed-4b30-9126-515c020684d8"/><p id="f2a9cc65-bdf0-40f4-8624-4acacefe8e0c" class="">
+</p><p id="59e8426a-e954-443b-9c94-a0525ab4bbd9" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><ol type="1" id="e92b72c7-0d40-4753-b5a1-5d2248bcf19a" class="numbered-list" start="1"><li>Denombrement</li></ol><ol type="1" id="8d1e87a7-b59b-4a58-9c6e-957e4f975e15" class="numbered-list" start="2"><li>Cardinalité d&#x27;un ensemble</li></ol><ol type="1" id="7c924c35-3604-409f-a7c7-289fcbb0915e" class="numbered-list" start="3"><li>QCM</li></ol><p id="23926d5f-04b9-448c-a2e5-273963aaedc6" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="5c2a10d0-78da-4bc8-b237-48525b301adb" class="numbered-list" start="1"><li>Matrice</li></ol><ol type="1" id="5c4caf1a-889e-4df1-8710-8bc64b40c21d" class="numbered-list" start="2"><li>fonctions numeriques</li></ol><p id="aebd2ee5-843d-4195-b18b-886a0666b9b4" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="42f5b7b0-f9c6-4c78-b3a7-8a332de81f58" class="numbered-list" start="1"><li>probabilite</li></ol><p id="b61dc092-4070-4f72-a19f-722dcd3efc14" class=""><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="b3e89a88-2bc5-4679-8e44-e5ad33869866" class="numbered-list" start="1"><li>Analyse</li></ol><ol type="1" id="c129cbe2-cd80-41a4-b381-b2ebf5069aa2" class="numbered-list" start="2"><li>bijection</li></ol><p id="abab450f-5b7c-457f-8e7a-1a9d7a582426" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="d9ee3975-fccb-40b2-92d2-8cb9dd10105a"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>Détermination du plan à partir de points, Relations entre points, lignes et plans, les nombres complexes</strong></div></figure><p id="032126b9-24d3-49d0-b2d5-e02fc5a3d0f6" class="">
+</p><p id="60f44578-fe0d-4edc-96b5-b90299c64f9d" class="">
+</p><figure id="87720562-f5be-4130-bb4d-df2e0be9b4ce"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/20212.pdf">2010.pdf</a></div></figure><h2 id="fd626db5-f4e4-45ed-a48c-1e26afb517a8" class="">Session control</h2><hr id="c170f544-41a1-4469-8900-c0012fc154b1"/><p id="c75cc005-4c67-407a-9420-66c9ef18fa88" class="">
+</p><p id="b650a75a-fb33-4500-8128-11ddb2440368" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><ol type="1" id="285f2f2a-052c-40bc-985e-206836e7822f" class="numbered-list" start="1"><li>Arithmetique</li></ol><ol type="1" id="7abb52b3-70e8-4a83-bf95-58968e759e13" class="numbered-list" start="2"><li>Suite</li></ol><ol type="1" id="30009e1e-32b6-4573-999d-3b4dae8403f9" class="numbered-list" start="3"><li>QCM</li></ol><p id="d4869946-d8a4-4683-897f-5025e454aaea" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="2f1be273-e100-4863-bd02-c67d1b5ebf82" class="numbered-list" start="1"><li>nombres complexes</li></ol><p id="2f9d2e7b-8064-4909-a362-fdc4a9ea113e" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="bd241935-2104-41cc-8f14-56a1895e56c0" class="numbered-list" start="1"><li>Suites</li></ol><p id="7f9434bc-76c6-4e52-ab70-1cb8ab3cad24" class=""><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="1f5e15e8-cbb6-407f-b119-6e745a3e169e" class="numbered-list" start="1"><li>Analyse</li></ol><ol type="1" id="eb1eb7a8-421e-498e-9080-ae8e6bce7217" class="numbered-list" start="2"><li>les limites, derivabilite</li></ol><p id="f18f144c-3978-4c2f-b88b-2e04f5f11a62" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="608753d9-2830-4c5b-93f1-48f11e3a0140"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>les nombres complexes, arithmitique, suite, analyse</strong></div></figure><p id="5dfb0dba-2f85-49df-aa55-528e0e823f74" class="">
+</p><figure id="bca2e6c0-0dd4-48e1-81b1-34fdce05ddc0"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2010.2.pdf">2010.2.pdf</a></div></figure><h1 id="857ec7f2-e6af-4655-96a5-1fe2f656f67e" class=""><mark class="highlight-purple"><strong>2011:</strong></mark></h1><p id="e04ade81-e056-4782-b4f7-c61efeaf19d2" class="">
+</p><h2 id="2c0fb77d-98d3-4cea-b239-2e49450a09d2" class="">Session Principale</h2><hr id="c71bada4-7075-459b-900a-9ee644095046"/><p id="930c89d9-4331-4a6b-a07e-051b5322837e" class="">
+</p><p id="c5d025c8-5555-45de-bf8b-f8557d5496fa" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><ol type="1" id="c64b2a64-74bf-4bdc-a193-8f1be13dbc1d" class="numbered-list" start="1"><li>les nombres complexes</li></ol><ol type="1" id="9698c50b-b11b-4139-889a-ab2c6354b7c0" class="numbered-list" start="2"><li>un repere</li></ol><p id="06f05f05-3046-45e9-bfb9-bd938ce2ed80" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="43070f6f-871d-47bc-bec6-01956cda4f6a" class="numbered-list" start="1"><li>Matrice</li></ol><ol type="1" id="72c8f7fe-d89c-43ed-93b1-cab331caf01e" class="numbered-list" start="2"><li>Matrice inverse</li></ol><p id="7d8d3154-011a-4e38-a570-2bc6d9f921f2" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="c30db3da-4136-4692-87a8-dfb2cb937698" class="numbered-list" start="1"><li>probabilite</li></ol><ol type="1" id="7f1cc3ea-1eb0-449b-98dd-1596696b0f7c" class="numbered-list" start="2"><li>denombrement</li></ol><p id="fe48a23f-6f26-4601-8b99-2474f4618561" class=""><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="59e803a5-edd3-4c44-8a05-2a8552f3b78f" class="numbered-list" start="1"><li>Analyse</li></ol><ol type="1" id="ab97a02a-4874-4180-b59d-ff46e146871b" class="numbered-list" start="2"><li>limites, derivabilite</li></ol><p id="d5594621-2cc6-45b5-a63c-b9840e49705d" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="e8873937-09bf-455c-9f0e-f8e5e6d397f6"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Les nombres complexes, Matrice, probabilite, analyse</div></figure><p id="3a47c484-419b-42df-8f0f-aa168a61d5a7" class="">
+</p><p id="560c3256-dce5-4e90-a91c-967fceb9cbd1" class="">
+</p><figure id="735b3d71-81fb-44a0-b63b-31d4e4fc83bb"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2011.pdf">2011.pdf</a></div></figure><h2 id="33e2747c-d89b-4d48-b075-aedcf6a35391" class="">Session control</h2><hr id="ccb349ce-f72b-4a67-bfe7-3c9ee9ac8dd8"/><p id="8de1c2b2-ffe6-4ae5-aaaf-cefebcc2bcf8" class="">
+</p><p id="a96ce9d6-2682-4628-a978-ca99c9564c31" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><ol type="1" id="eb27e75b-5a30-437e-8f4f-afe49b165f44" class="numbered-list" start="1"><li>les nombres complexes</li></ol><ol type="1" id="36bfb165-700c-4cc2-8b04-ec497a2c1be4" class="numbered-list" start="2"><li>un repere</li></ol><p id="597da9a5-a177-4fb0-9046-6e424a727ee0" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="55aa91d9-1fd6-44a5-9c1c-a57e79158749" class="numbered-list" start="1"><li>Matrice</li></ol><ol type="1" id="f8dca3c1-9680-4090-b8e6-ff569af55b65" class="numbered-list" start="2"><li>Matrice inverse</li></ol><p id="d486ba6a-d3f3-42f6-8104-90255de5dd6a" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="8e742c1d-b76f-4456-8c88-9b996ef76cb8" class="numbered-list" start="1"><li>Suites</li></ol><ol type="1" id="4befa51a-c699-4b1f-85b9-019b0452d906" class="numbered-list" start="2"><li>Arithmitique</li></ol><ol type="1" id="a5a66554-34a1-4891-8bef-66410e27dcb5" class="numbered-list" start="3"><li>probabilite</li></ol><p id="7fa65fff-8090-471c-ac8f-a46c9a047b16" class=""><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="6c047c25-b123-411c-a492-40d59643ff1f" class="numbered-list" start="1"><li>Analyse</li></ol><ol type="1" id="d5afff8b-a1fb-4fca-bd04-8e9ae47e35f5" class="numbered-list" start="2"><li>les limites, derivabilite</li></ol><p id="fa2e3411-83e0-4fe0-8a4f-6798ee00fb55" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="c4bd4473-5fa8-4f93-8d67-9cfad020d1e9"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>les nombres complexes, arithmitique, suite, analyse, Matrice, probabilite</strong></div></figure><p id="95f20705-41d6-41d7-8e18-36e7bda4f0fa" class="">
+</p><figure id="fbe7163b-202c-48ec-9eb3-65b8882f5747"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2012.2.pdf">2011.2.pdf</a></div></figure><h1 id="279915df-0631-446d-a412-1981dbbb9011" class=""><mark class="highlight-purple"><strong>2012:</strong></mark></h1><p id="96e17d91-9e1e-4bbe-bdab-63b0b92ac53a" class="">
+</p><h2 id="82d54a54-d8c1-4691-8da3-f0ed83623046" class="">Session Principale</h2><hr id="1eb051b9-c6a8-4b75-b154-d9b4f045b6bb"/><p id="5f253966-e723-4a8e-bcf4-d6fcb101b065" class="">
+</p><p id="56723912-2cf2-44d5-b522-910b6fa68cbd" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><ol type="1" id="7a0ce4c4-5141-450f-993b-311d825bc0d4" class="numbered-list" start="1"><li>les nombres complexes</li></ol><ol type="1" id="ada13bf5-6547-4898-869c-eb31c1199460" class="numbered-list" start="2"><li>des equations</li></ol><p id="d2c1edf6-f6e9-4408-9c9f-37e7d475a93d" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="0594b953-ab12-49a8-af44-f9bf4d197393" class="numbered-list" start="1"><li>suites</li></ol><ol type="1" id="459375ec-5169-456c-8f44-5e510e035285" class="numbered-list" start="2"><li>arithmitque</li></ol><ol type="1" id="6ebc3128-4f60-4b59-9317-e73696f09044" class="numbered-list" start="3"><li>limite</li></ol><p id="ffdf4083-a870-4a53-8392-9809050c70b1" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="745a25e7-2b73-466c-af02-b09c1833d585" class="numbered-list" start="1"><li>Matrice</li></ol><ol type="1" id="977a1ea9-97dd-46be-bfbb-4f32590cf162" class="numbered-list" start="2"><li>Matrice inverse</li></ol><p id="b64db0ed-ec24-4880-929a-7b0eaaa67eaa" class=""><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="38820137-03b2-4457-8fae-96a05b23974c" class="numbered-list" start="1"><li>Analyse</li></ol><ol type="1" id="919e9491-e091-489e-8b9f-540151a3c13f" class="numbered-list" start="2"><li>limites, derivabilite</li></ol><p id="75a0b010-8903-4ecd-8dfa-d2419855a576" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="cc450539-5132-4935-ac49-b154241d8e5b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Les nombres complexes, Matrice, probabilite, analyse</div></figure><p id="6d2b8d5a-878c-4d36-aaf7-72b58e5a383c" class="">
+</p><figure id="0bfc249e-0546-433f-90d4-78fceaf2fd2c"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2012.pdf">2012.pdf</a></div></figure><p id="483839cf-f9d2-4348-b599-331be967cce1" class="">
+</p><h2 id="652f21b5-dfb8-4171-bcb5-99bc96212b5f" class="">Session control</h2><hr id="6449e109-b07d-403b-992c-c57698113085"/><p id="c863489f-45c1-4e4f-b0eb-e71970b41a53" class="">
+</p><p id="673afe65-10ad-4572-b264-eb19ff23fe98" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><ol type="1" id="9881b057-7fe0-4c42-a6c3-7618ab5d3d8c" class="numbered-list" start="1"><li>les nombres complexes</li></ol><ol type="1" id="34438eed-49d4-478f-9b37-45b471819e77" class="numbered-list" start="2"><li>un repere</li></ol><p id="a2f5ef9a-6f5f-47f1-a4f0-be8555eb847e" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="4707bd47-6e36-432b-93b6-3252da515b38" class="numbered-list" start="1"><li>probabilite</li></ol><ol type="1" id="d0a96766-53b7-499c-a8f9-83fbd8a35fa9" class="numbered-list" start="2"><li>loi de probabilite</li></ol><p id="18981bca-4c43-460e-8949-71154ea923e2" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="3212a62d-edfc-41d3-b971-2ee07e096fa2" class="numbered-list" start="1"><li>Arithmitique</li></ol><p id="62f315b8-320d-41d5-bd96-08184a829a06" class=""><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="66a10a7a-e113-439b-88ab-ec0e17479d75" class="numbered-list" start="1"><li>Analyse</li></ol><ol type="1" id="872e41c1-c5e0-423b-87d3-ea199d6127eb" class="numbered-list" start="2"><li>les limites, derivabilite</li></ol><p id="a2d89c95-5248-432e-9699-30bfc0220a75" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="87829683-781d-44dc-8891-d0d087c2b095"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>les nombres complexes, arithmitique, analyse, probabilite</strong></div></figure><p id="31e9976f-9a1d-498e-97e5-4640eab1ce69" class="">
+</p><figure id="38b2cae9-4059-49da-9331-6a402580b413"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2012.2%201.pdf">2012.2.pdf</a></div></figure><p id="f62dac41-bf38-4196-883e-e64b134a69e1" class="">
+</p><h1 id="943afe05-edaa-4010-beac-8e68630e0f49" class=""><mark class="highlight-purple"><strong>2013:</strong></mark></h1><p id="f6b81bc7-6d00-42cd-97ef-67b3c80d437f" class="">
+</p><h2 id="75fbf159-8b43-4017-939b-febdf8f10ac4" class="">Session Principale</h2><hr id="8f63aae2-cc75-4c83-8ffb-ce02089711be"/><p id="0647cb46-7c99-437c-b348-4239807ee7be" class="">
+</p><p id="b617cba3-17c1-4579-a38c-eb61d3f7ec7b" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><ol type="1" id="aeb47c55-24ac-43fa-a72c-50b77ccd0422" class="numbered-list" start="1"><li>les nombres complexes</li></ol><ol type="1" id="a4ffe3dd-baea-4f2d-91b9-06dbfac695ec" class="numbered-list" start="2"><li>des equations</li></ol><ol type="1" id="7dc756bb-9bb9-4f86-817d-cec843fb2da4" class="numbered-list" start="3"><li>un repere</li></ol><p id="cbd80c11-57bf-4e2f-90e9-3bbdcfb9687f" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="b5d82fed-bce0-4ae7-9360-fbc2dc0c6070" class="numbered-list" start="1"><li>probabilite</li></ol><ol type="1" id="4e008ced-ae81-40c1-a883-7573a3bb5698" class="numbered-list" start="2"><li>denombrement </li></ol><p id="97c1007a-5251-43f0-a187-13fd1a61fd14" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="ff5a99c3-5c3c-48df-ba19-b8e0cd85859c" class="numbered-list" start="1"><li>Analyse</li></ol><ol type="1" id="ddfb09d6-c9ff-46f5-a345-d7542ba91a9d" class="numbered-list" start="2"><li>limites, derivabilite</li></ol><p id="3cab65d6-6476-4036-9f7e-03472a5ce263" class=""><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="4b7060a2-b8a3-4e74-a7a9-756abcd5b1a1" class="numbered-list" start="1"><li>matrice</li></ol><ol type="1" id="b0d2609b-3e20-4086-98d0-e0f0cfe5b740" class="numbered-list" start="2"><li>l’ensemble des couples</li></ol><p id="af09b9d6-9b2a-453b-b32e-514466abb15f" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="11152791-cda4-4d51-9255-8af2c7443b6b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Les nombres complexes, Matrice, probabilite, analyse, matrice, denombrement</div></figure><p id="378d0e9d-ec7b-474a-9d21-947ba3acd287" class="">
+</p><figure id="0d71000b-39a0-4a94-bfb8-9c16b47d900f"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2013.pdf">2013.pdf</a></div></figure><p id="97180099-ba47-4689-a5b0-78a4bf70859f" class="">
+</p><h2 id="04acf73c-c15b-408f-908c-865f86b1df7a" class="">Session control</h2><hr id="d39b1a36-c476-4199-a0a9-05d95d16219d"/><p id="ae3d9e28-33f0-4279-9af4-699a00f3f2fb" class="">
+</p><p id="3e3003fc-5e69-4006-b8d6-e08200e10bdf" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><ol type="1" id="a0743f83-3bd3-4619-9b37-d94bac998c8e" class="numbered-list" start="1"><li>QCM</li></ol><ol type="1" id="0afd56dc-e730-4791-af86-f72bc8e2767a" class="numbered-list" start="2"><li>arithmitique</li></ol><p id="3447f89c-d8bb-476b-87c9-260817d2b830" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="a3e87011-7ba7-44b0-bb04-d92453ce254a" class="numbered-list" start="1"><li>Matrice</li></ol><p id="97eab7de-f9f5-4e07-b5cc-56ac2c08494a" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="a4c2b08b-4c61-4c7b-bcc3-b73c7c8c906d" class="numbered-list" start="1"><li>Analyse</li></ol><ol type="1" id="2ed40e3b-4052-4c58-9e32-1762a60eb418" class="numbered-list" start="2"><li>les limites, derivabilite</li></ol><p id="706937cc-0695-4025-a4b1-32782cf919b6" class=""><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="adf30836-626c-479b-8291-1a70cda298c9" class="numbered-list" start="1"><li>Arithmitique</li></ol><ol type="1" id="9e33e82d-9cb6-406e-b94f-6104495c2f0e" class="numbered-list" start="2"><li>suite </li></ol><ol type="1" id="ed1c5dc0-6682-4e4e-b235-0a5bcec2692b" class="numbered-list" start="3"><li>limite</li></ol><p id="5890c256-ccc2-436c-8513-568c4d63b538" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="71687edb-4c4d-4d7d-aa4f-0c245b42b06f"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>les nombres complexes, arithmitique, analyse, probabilite, suite</strong></div></figure><p id="45b9ca1c-4f0d-4e99-9b31-236e09c8f605" class="">
+</p><figure id="d30894c8-84a9-4488-9a98-3d0d00b6b440"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2013.2.pdf">2013.2.pdf</a></div></figure><h1 id="157d6211-12ae-4600-8886-cb626dee4e4c" class=""><mark class="highlight-purple"><strong>2014:</strong></mark></h1><p id="622b802a-2abc-45aa-b350-8422ed1db4b6" class="">
+</p><h2 id="d598a772-c88a-458a-ad6b-a5c9cfd272e0" class="">Session Principale</h2><hr id="1bad735a-3ec4-4e6b-9199-3c10c86cb1d7"/><p id="a7171d05-63bb-405a-ba53-eb400ab602a0" class="">
+</p><p id="1058e815-b239-4ea0-98ce-2e6092096313" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><ol type="1" id="44c9f328-e0c3-49d0-9711-9c820a841125" class="numbered-list" start="1"><li>les nombres complexes</li></ol><ol type="1" id="345b84bc-b498-4fd1-aa52-35a2c1e4bb53" class="numbered-list" start="2"><li>QCM</li></ol><ol type="1" id="5e3f94c8-8ebd-4e69-a04d-ac18ca49cf65" class="numbered-list" start="3"><li>des equations</li></ol><p id="6af89136-7239-4e11-ad6f-35a0d7c9f303" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="bbdbaeb7-dccf-4785-8e0f-f7c241fd39a8" class="numbered-list" start="1"><li>Analyse</li></ol><ol type="1" id="f8566657-b6cc-4853-8b8c-6004995b3cf3" class="numbered-list" start="2"><li>limites, derivabilite</li></ol><ol type="1" id="1f0a85a8-c721-486b-ab42-1b2e171b84f3" class="numbered-list" start="3"><li>integral</li></ol><p id="b6bce600-9b4e-4b9b-8fbd-42638f9d111a" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="65824e84-ccd9-4990-b673-24ddd4afd5ee" class="numbered-list" start="1"><li>nombres complexes</li></ol><ol type="1" id="72c55a08-9843-479d-b349-f78fdf613fa0" class="numbered-list" start="2"><li>des equations</li></ol><ol type="1" id="ff4209a2-699a-423c-8fe0-bc3ca446a226" class="numbered-list" start="3"><li>un repere</li></ol><p id="d7b01aff-192e-43b2-8782-2ea86c08f67b" class=""><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="682909d9-11ea-40a2-9054-c46e9db09186" class="numbered-list" start="1"><li>coefficient de correlation lineaire</li></ol><ol type="1" id="b2372ff6-b667-4baf-a883-7f4c9205c824" class="numbered-list" start="2"><li>probabilite</li></ol><p id="9fb48a32-64ef-4813-8184-0cd6fabee6ba" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="1d39974a-5c25-4d88-8aa8-7c1839a9cd4e"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Les nombres complexes, probabilite, analyse, matrice, denombrement, integral</div></figure><p id="eeb6fad6-c8b0-4a05-9e6d-4c196711b6ff" class="">
+</p><figure id="492dca1a-6f1a-4998-9b6a-60770da4a53c"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2014.pdf">2014.pdf</a></div></figure><p id="3cd9d974-5eb1-4c60-a45b-904b00ab92a3" class="">
+</p><h2 id="32da6498-7cfd-4480-957d-08cfa762079e" class="">Session control</h2><hr id="48754634-c11c-4d15-a6bd-568b78a847f5"/><p id="43bf0554-7177-4e66-8d4e-554b08b07885" class="">
+</p><p id="766b869e-ef6d-4937-810e-56f6ce8d97b2" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><ol type="1" id="5e614a6d-6c73-4ce4-8270-138fafe446d0" class="numbered-list" start="1"><li>repere</li></ol><ol type="1" id="5dc6e6d3-0c50-4c5c-9c68-7422a48a1c12" class="numbered-list" start="2"><li>suite</li></ol><ol type="1" id="faecc738-bce8-40ec-a1b3-c2243282395e" class="numbered-list" start="3"><li>suite convergente </li></ol><p id="4a853635-0e04-4afa-9756-1a759f43f890" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="a35f9612-a6f5-426d-b4d4-80ead45e2c0a" class="numbered-list" start="1"><li>analyse</li></ol><p id="c4473419-071f-4ea3-9553-7208e389a440" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="ce02fff7-318f-43a1-bfcb-24710b352977" class="numbered-list" start="1"><li>probabilite</li></ol><p id="d4edf347-97ac-487a-b9b8-f743cf5d1001" class=""><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="f833a1cc-02c3-41b5-a13f-e061e24b088b" class="numbered-list" start="1"><li>matrice</li></ol><ol type="1" id="d615d4e0-2b08-4cb2-808e-ab5c9d52a950" class="numbered-list" start="2"><li>probleme</li></ol><p id="9cac4464-9256-4381-aa4f-9c3b52f07c3c" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="fc0dc041-ffae-4530-b4b8-cdee559efa2b"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>les nombres complexes, arithmitique, analyse, probabilite, suite, matrice</strong></div></figure><p id="bf23ecf4-29f7-48c2-bb50-44eeeceb0561" class="">
+</p><figure id="d9f5d5d0-1d1b-43e9-907d-29a8ee14fe75"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2014.2.pdf">2014.2.pdf</a></div></figure><p id="99a12118-4d46-49e7-aab3-4109fe028483" class="">
+</p><h1 id="e2652803-1038-4ab2-a376-6a1369bd0fa0" class=""><mark class="highlight-purple"><strong>2015:</strong></mark></h1><p id="d4449582-0c08-4e52-bb3f-f0fb854c1976" class="">
+</p><h2 id="45dac280-143c-4e61-8b4c-8cb99694600c" class="">Session Principale</h2><hr id="e66968b3-62fd-4f4f-a89c-10ae45cffea3"/><p id="79f3f13e-8c4f-4806-908e-8baaacc1abeb" class="">
+</p><p id="646a2e35-cc4f-40a6-8037-7d030377199e" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><ol type="1" id="2c28430e-d313-4698-ad88-5a41ce4d44f5" class="numbered-list" start="1"><li>les nombres complexes</li></ol><ol type="1" id="8b4f68f1-a373-4ef1-8cc3-a07d9653ed3c" class="numbered-list" start="2"><li>des equations</li></ol><ol type="1" id="4d76634d-51e1-494b-a261-73eb71e68517" class="numbered-list" start="3"><li>un repere</li></ol><p id="d25a1a9c-ed0b-41ad-837b-23d0a3c2f519" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="f8438c70-d8c9-43c4-a8cd-77956914a3f6" class="numbered-list" start="1"><li>suite</li></ol><ol type="1" id="96bd6e57-0275-416a-9da6-1af38ecda65d" class="numbered-list" start="2"><li>reccurence</li></ol><p id="d29799de-6fea-4864-a6b5-b83d321bf197" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="31f0462b-cf20-41d3-bbdf-91a2055dc516" class="numbered-list" start="1"><li>analyse</li></ol><p id="d3687465-435d-4f96-bf86-b927fc000f3d" class=""><span style="border-bottom:0.05em solid">exercise 4:</span></p><ol type="1" id="fe27396b-6d3f-4361-af7a-40db804d101a" class="numbered-list" start="1"><li>les nombres complexes</li></ol><ol type="1" id="a9232ead-e9b6-4e4e-abe8-0728b30edd8e" class="numbered-list" start="2"><li>probabilite</li></ol><ol type="1" id="8191b29b-b16b-4a5a-b99a-ada5343ba4de" class="numbered-list" start="3"><li>problemes</li></ol><p id="ee1b20da-665f-4c9a-8aa2-eb2383d70753" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="18d2c74b-5f69-4547-b67c-bd7bb15584f8"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%">Les nombres complexes, probabilite, analyse</div></figure><p id="d42bb2de-0944-4561-98d0-170c4833c44e" class="">
+</p><figure id="9a490be1-d5f9-4db3-8bcb-fdb4f08a1078"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2015.pdf">2015.pdf</a></div></figure><h2 id="4bd422bc-2ef9-4f10-8673-93fa27559897" class="">Session control</h2><hr id="9e98b8c5-719f-42a7-8677-ee721ddbc7ef"/><p id="4aa4ed86-768b-4cb3-949f-61865445a60c" class="">
+</p><p id="19cea137-3a1f-4f1e-8484-44c22329b826" class=""><span style="border-bottom:0.05em solid">exercise 1:</span></p><ol type="1" id="f7e084d0-f88d-4057-84e1-f2cbbbf7bf5a" class="numbered-list" start="1"><li>matrice</li></ol><ol type="1" id="4e93e2e5-e44c-4cc8-bc65-b4b2826d6f1d" class="numbered-list" start="2"><li>limite</li></ol><ol type="1" id="b7e20c46-1e2e-44fe-8845-032c6a482e0e" class="numbered-list" start="3"><li>suite</li></ol><ol type="1" id="10c88bd1-1cf0-4465-90ae-a448d09b7580" class="numbered-list" start="4"><li>QCM </li></ol><p id="40b12a45-77de-4788-8bb4-6382dac75d03" class=""><span style="border-bottom:0.05em solid">exercise 2:</span></p><ol type="1" id="2628a99c-3bb4-496e-b7cf-859132103309" class="numbered-list" start="1"><li>analyse</li></ol><p id="eb451eca-4fe3-437c-8f1d-1a4c4574d52e" class=""><span style="border-bottom:0.05em solid">exercise 3:</span></p><ol type="1" id="785ecd22-6b0d-4e50-aa29-2271de2af96d" class="numbered-list" start="1"><li>probabilite</li></ol><ol type="1" id="fdaa1fa4-0204-415e-93b1-c7c50d29889e" class="numbered-list" start="2"><li>des equtions</li></ol><p id="da60a2cf-738b-4d71-9fe1-c0b8f600c4a3" class="">
+</p><figure class="block-color-gray_background callout" style="white-space:pre-wrap;display:flex" id="844fb6a5-82ee-42f5-a295-84f974f96dcd"><div style="font-size:1.5em"><span class="icon">💡</span></div><div style="width:100%"><strong>matrice, limite, suite, analyse, probabilite</strong></div></figure><figure id="847faa9d-0958-41b7-9b8a-2224f97fa255"><div class="source"><a href="Math%20e39095dfa3ec41f78c6a3e561ec36799/2015.5.pdf">2015.2.pdf</a></div></figure><p id="8cc51aad-aaf3-4f62-819f-05a21e5f055a" class="">
+</p></div></article><span class="sans" style="font-size:14px;padding-top:2em"></span></body></html>
